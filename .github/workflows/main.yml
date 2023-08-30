@@ -14,13 +14,13 @@ jobs:
     - name: Configuración de entorno de Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '14'
+        node-version: '16'
     - name: Instalación de paquetes
       run: npm install
     - name: Compilar la aplicación
-      run: ng build --configuration=production
+      run: npm run ng build --configuration=production
     - name: Ejecutar pruebas
-      run: ng test --watch=false
+      run: npm run ng test --watch=false
     - name: Merge ${{ github.ref }} -> develop
       uses: tukasz/direct-merge-action@master
       with:

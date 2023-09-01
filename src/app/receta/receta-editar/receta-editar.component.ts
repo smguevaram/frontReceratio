@@ -34,16 +34,13 @@ export class RecetaEditarComponent implements OnInit {
 
     const idReceta = parseInt(this.router.snapshot.params['id']);
 
-    //Primero cargo los ingredientes
     this.ingredienteService.darIngredientes().subscribe((ingredientes) => {
       this.listaIngredientes = ingredientes
 
-      //Cargo la receta cuando ya tengo los ingredientes
       this.recetaService.darReceta(idReceta).subscribe((receta) => {
         this.receta = receta
         this.ingredientesSubForm = this.formBuilder.array([])
 
-        //Primero diligencio la sub forma para no tener problemas con el bind
         for(var recetaIngrediente of this.receta.ingredientes) {
           this.adicionarElemento(recetaIngrediente.id, recetaIngrediente.ingrediente.id, recetaIngrediente.cantidad)
         }

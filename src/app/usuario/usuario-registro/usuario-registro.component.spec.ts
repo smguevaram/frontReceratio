@@ -1,5 +1,8 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ToastrService } from 'ngx-toastr';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
@@ -11,8 +14,10 @@ describe('UsuarioRegistroComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UsuarioRegistroComponent ]
+      declarations: [ UsuarioRegistroComponent ],
+      imports: [ HttpClientTestingModule, ReactiveFormsModule ]
     })
+    .overrideProvider(ToastrService, { useValue: {} })
     .compileComponents();
   }));
 

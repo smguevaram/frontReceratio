@@ -20,7 +20,7 @@ jobs:
     - name: Compilar la aplicación
       run: npm run ng build --configuration=production
     - name: Ejecutar pruebas
-      run: npm run ng test --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
+      run: npm run ng test -- --watch=false --browsers=ChromeHeadless
     - name: Merge ${{ github.ref }} -> develop
       uses: tukasz/direct-merge-action@master
       with:
